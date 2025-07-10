@@ -47,3 +47,44 @@ body {
     opacity: 0;
   }
 }
+
+/* Botón corazón */
+.boton-corazon {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff3399;
+  color: white;
+  font-size: 40px;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  padding: 20px;
+  text-decoration: none;
+  box-shadow: 0 0 10px #ff66cc, 0 0 20px #ff3399, 0 0 30px #ff1a75;
+  animation: latido 2s infinite ease-in-out, resplandor 1.5s infinite;
+  transition: transform 0.3s ease;
+  z-index: 20;
+}
+
+.boton-corazon:hover {
+  transform: translateX(-50%) scale(1.2);
+}
+
+/* Animaciones del botón */
+@keyframes latido {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.15); }
+}
+
+@keyframes resplandor {
+  0% {
+    box-shadow: 0 0 10px #ff66cc, 0 0 20px #ff3399;
+  }
+  50% {
+    box-shadow: 0 0 20px #ff99cc, 0 0 30px #ff66cc;
+  }
+  100% {
+    box-shadow: 0 0 10px #ff66cc, 0 0 20px #ff3399;
+  }
+}
