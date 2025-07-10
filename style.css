@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at center, #000000, #1a0000);
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mensaje {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ff1a75;
+  font-size: 64px;
+  font-weight: bold;
+  text-shadow: 0 0 20px #ff1a75, 0 0 30px #ff66a3;
+  z-index: 10;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+.mel {
+  position: absolute;
+  color: #ff66cc;
+  font-size: 32px;
+  opacity: 0.7;
+  animation: floatMel 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes floatMel {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg);
+    opacity: 0;
+  }
+}
