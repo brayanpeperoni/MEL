@@ -1,90 +1,38 @@
 body {
   margin: 0;
   padding: 0;
-  background: radial-gradient(circle at center, #000000, #1a0000);
   overflow: hidden;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: black;
+  font-family: 'Arial', sans-serif;
+  color: white;
 }
 
-.mensaje {
+#Jazmin-container {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #ff1a75;
-  font-size: 64px;
-  font-weight: bold;
-  text-shadow: 0 0 20px #ff1a75, 0 0 30px #ff66a3;
-  z-index: 10;
-  animation: pulse 1.5s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-  50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.9; }
-  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-}
-
-.mel {
-  position: absolute;
-  color: #ff66cc;
-  font-size: 32px;
-  opacity: 0.7;
-  animation: floatMel 10s linear infinite;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
 }
 
-@keyframes floatMel {
-  0% {
-    transform: translateY(100vh) rotate(0deg);
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(-10vh) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-/* Botón corazón */
-.boton-corazon {
+.Jazmin {
   position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #ff3399;
-  color: white;
-  font-size: 40px;
-  border: 4px solid #fff;
-  border-radius: 50%;
-  padding: 20px;
-  text-decoration: none;
-  box-shadow: 0 0 10px #ff66cc, 0 0 20px #ff3399, 0 0 30px #ff1a75;
-  animation: latido 2s infinite ease-in-out, resplandor 1.5s infinite;
-  transition: transform 0.3s ease;
-  z-index: 20;
+  top: 0;
+  color: pink;
+  font-weight: bold;
+  animation-name: flotar;
+  animation-timing-function: linear;
 }
 
-.boton-corazon:hover {
-  transform: translateX(-50%) scale(1.2);
+@keyframes flotar {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
 }
 
-/* Animaciones del botón */
-@keyframes latido {
-  0%, 100% { transform: translateX(-50%) scale(1); }
-  50% { transform: translateX(-50%) scale(1.15); }
-}
-
-@keyframes resplandor {
-  0% {
-    box-shadow: 0 0 10px #ff66cc, 0 0 20px #ff3399;
-  }
-  50% {
-    box-shadow: 0 0 20px #ff99cc, 0 0 30px #ff66cc;
-  }
-  100% {
-    box-shadow: 0 0 10px #ff66cc, 0 0 20px #ff3399;
-  }
+canvas#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
