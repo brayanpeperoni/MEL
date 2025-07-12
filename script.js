@@ -1,6 +1,6 @@
 const container = document.getElementById("Jazmin-container");
 
-function createMel() {
+function createJazmin() {
   const Jazmin = document.createElement("div");
   Jazmin.classList.add("Jazmin");
 
@@ -11,6 +11,7 @@ function createMel() {
   Jazmin.style.left = Math.random() * 100 + "vw";
   Jazmin.style.fontSize = (Math.random() * 20 + 28) + "px";
   Jazmin.style.animationDuration = (Math.random() * 5 + 6) + "s";
+  Jazmin.style.position = "absolute";
 
   container.appendChild(Jazmin);
 
