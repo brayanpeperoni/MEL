@@ -2,7 +2,7 @@ const container = document.getElementById("mel-container");
 
 function createMel() {
   const mel = document.createElement("div");
-  mel.classList.add("mel");
+  mel.classList.add("Jazmin");
 
   const corazones = ["💖", "💕", "💘", "❤️", "💞"];
   const corazon = corazones[Math.floor(Math.random() * corazones.length)];
