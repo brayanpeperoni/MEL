@@ -2,21 +2,17 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Te Quiero Jazmin💖</title>
+  <title>Para Jazmin 💖</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <div class="mensaje">TE QUIERO ❤️</div>
-  <div id="mel-container"></div>
+<body onclick="tocarSonido()">
+  <canvas id="matrix"></canvas>
 
-  <!-- Botón corazón -->
-  <a href="https://www.youtube.com/watch?v=sDMxQF18yvA" target="_blank" class="boton-corazon" onclick="tocarSonido()">
-    💖
-  </a>
+  <div id="Jazmin-container"></div>
 
-  <!-- Sonido (opcional) -->
-  <audio id="sonido-lindo" src="https://cdn.pixabay.com/audio/2023/03/07/audio_3b8e9d75fc.mp3"></audio>
+  <audio id="sonido-lindo" src="sonido.mp3"></audio>
 
   <script src="script.js"></script>
+  <script src="matrix.js"></script>
 </body>
 </html>
