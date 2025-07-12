@@ -6,7 +6,7 @@ function createMel() {
 
   const corazones = ["💖", "💕", "💘", "❤️", "💞"];
   const corazon = corazones[Math.floor(Math.random() * corazones.length)];
-  mel.innerText = `Mel ${corazon}`;
+  mel.innerText = `Jazmin ${corazon}`;
 
   mel.style.left = Math.random() * 100 + "vw";
   mel.style.fontSize = (Math.random() * 20 + 28) + "px";
