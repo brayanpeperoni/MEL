@@ -1,25 +1,25 @@
-const container = document.getElementById("mel-container");
+const container = document.getElementById("Jazmin-container");
 
 function createMel() {
-  const mel = document.createElement("div");
-  mel.classList.add("Jazmin");
+  const Jazmin = document.createElement("div");
+  Jazmin.classList.add("Jazmin");
 
   const corazones = ["💖", "💕", "💘", "❤️", "💞"];
   const corazon = corazones[Math.floor(Math.random() * corazones.length)];
-  mel.innerText = `Jazmin ${corazon}`;
+  Jazmin.innerText = `Jazmin ${corazon}`;
 
-  mel.style.left = Math.random() * 100 + "vw";
-  mel.style.fontSize = (Math.random() * 20 + 28) + "px";
-  mel.style.animationDuration = (Math.random() * 5 + 6) + "s";
+  Jazmin.style.left = Math.random() * 100 + "vw";
+  Jazmin.style.fontSize = (Math.random() * 20 + 28) + "px";
+  Jazmin.style.animationDuration = (Math.random() * 5 + 6) + "s";
 
-  container.appendChild(mel);
+  container.appendChild(Jazmin);
 
   setTimeout(() => {
-    mel.remove();
+    Jazmin.remove();
   }, 15000);
 }
 
-setInterval(createMel, 300);
+setInterval(createJazmin, 300);
 
 function tocarSonido() {
   const sonido = document.getElementById("sonido-lindo");
