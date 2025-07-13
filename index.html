@@ -2,17 +2,25 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Para Jazmin 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Quieres ser mi Puddina?</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body onclick="tocarSonido()">
-  <canvas id="matrix"></canvas>
+<body>
 
-  <div id="Jazmin-container"></div>
+  <canvas id="matrix-canvas"></canvas>
 
-  <audio id="sonido-lindo" src="sonido.mp3"></audio>
+  <div class="contenido">
+    <h1>¿Quieres ser mi Puddina? 💖</h1>
+
+    <div class="botones">
+      <button class="btn-si" onclick="aceptarPuddina()">Sí ❤️</button>
+      <button class="btn-no" onclick="negarPuddina()">No ❌</button>
+    </div>
+
+    <h2 class="nombre">JAZMÍN 💘</h2>
+  </div>
 
   <script src="script.js"></script>
-  <script src="matrix.js"></script>
 </body>
 </html>
