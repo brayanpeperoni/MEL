@@ -5,25 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TYRONE_PRIME</title>
   <style>
-    /* Ocupa toda la pantalla */
+    /* Reseteo y fondo negro */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { width: 100%; height: 100%; overflow: hidden; background: black; }
 
-    /* Canvas como fondo Matrix */
+    /* Canvas Matrix detrás de todo */
     #matrix {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%; z-index: -1; background: black;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Enviar detrás de todo */
     }
 
-    /* Contenedor principal: vertical, centrado */
+    /* Contenedor principal: vertical y centrado */
     #videoContainer {
       position: absolute;
       top: 50%; left: 50%; transform: translate(-50%, -50%);
-      display: flex; flex-direction: column; align-items: center;
-      gap: 1em; z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+      z-index: 1;
     }
 
-    /* Título encima del video */
+    /* Título sobre el video */
     #pageTitle {
       color: #ffffff;
       font-size: 2.5rem;
@@ -32,19 +39,24 @@
       padding: 0.5em 1em;
       border-radius: 8px;
       text-align: center;
+      z-index: 2;
     }
 
-    /* Contenedor para video e imagen side-by-side */
+    /* Flex para video e imagen */
     #media {
-      display: flex; align-items: center; gap: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
 
-    /* Video estilo */
+    /* Video de tamaño moderado */
     video {
       border: 3px solid rgba(0, 255, 70, 0.8);
       border-radius: 8px;
       background: rgba(0, 0, 0, 0.5);
-      width: 300px; max-width: 50vw; height: auto;
+      width: 250px;
+      max-width: 60vw;
+      height: auto;
     }
 
     /* Imagen lateral */
@@ -52,21 +64,22 @@
       border: 3px solid rgba(0, 255, 70, 0.8);
       border-radius: 8px;
       background: rgba(0, 0, 0, 0.5);
-      width: 150px; height: auto;
+      width: 120px;
+      height: auto;
     }
   </style>
 </head>
 <body>
-  <!-- Fondo Matrix -->
+  <!-- Efecto Matrix -->
   <canvas id="matrix"></canvas>
 
-  <!-- Contenedor con título y medios -->
+  <!-- Contenedor de título, video e imagen -->
   <div id="videoContainer">
     <h1 id="pageTitle">🔥 TYRONE-PRIME 🔥</h1>
     <div id="media">
       <video controls autoplay loop muted>
         <source src="./video/SnapTik-dot-Kim-cf2043946c00541a6b23c4bd28b13e0b.mp4" type="video/mp4">
-        Tu navegador no soporta el elemento <code>video</code>.
+        Tu navegador no soporta <code>video</code>.
       </video>
       <img src="./video/WhatsApp%20Image%202025-07-24%20at%2011.56.50%20AM.jpeg"
            alt="Imagen lateral" class="side-image" />
@@ -74,7 +87,7 @@
   </div>
 
   <script>
-    // Canvas Matrix
+    // Inicialización del canvas Matrix
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
     function resizeCanvas() {
@@ -90,17 +103,23 @@
     let drops = Array(columns).fill(1);
 
     function draw() {
+      // Fondo semitransparente para trazo
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#0F0'; ctx.font = `${fontSize}px monospace`;
+      ctx.fillStyle = '#0F0';
+      ctx.font = `${fontSize}px monospace`;
       for (let i = 0; i < drops.length; i++) {
         const text = chars.charAt(Math.floor(Math.random() * chars.length));
-        const x = i * fontSize, y = drops[i] * fontSize;
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
         ctx.fillText(text, x, y);
         if (y > canvas.height && Math.random() > 0.975) drops[i] = 0;
         drops[i]++;
       }
     }
+
+    // Primer dibujo e intervalo
+    draw();
     setInterval(draw, 33);
   </script>
 </body>
