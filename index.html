@@ -5,95 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TYRONE_PRIME</title>
   <style>
-    /* Estilos generales para ocupar todo el espacio */
+    /* Ocupa toda la pantalla */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { width: 100%; height: 100%; overflow: hidden; background: black; }
 
-    /* Canvas de Matrix como fondo */
+    /* Canvas como fondo Matrix */
     #matrix {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: black;
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%; z-index: -1; background: black;
     }
 
-    /* Título principal centrado en la parte superior */
-    #pageTitle {
+    /* Contenedor principal: vertical, centrado */
+    #videoContainer {
       position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      display: flex; flex-direction: column; align-items: center;
+      gap: 1em; z-index: 1;
+    }
+
+    /* Título encima del video */
+    #pageTitle {
       color: #ffffff;
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-family: monospace;
-      z-index: 2;
       background: rgba(0, 0, 0, 0.7);
       padding: 0.5em 1em;
       border-radius: 8px;
       text-align: center;
     }
 
-    /* Contenedor principal centrado */
-    #videoContainer {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      z-index: 1;
+    /* Contenedor para video e imagen side-by-side */
+    #media {
+      display: flex; align-items: center; gap: 20px;
     }
 
-    /* Estilo del elemento video (tamaño moderado) */
+    /* Video estilo */
     video {
       border: 3px solid rgba(0, 255, 70, 0.8);
       border-radius: 8px;
-      background: rgba(0,0,0,0.5);
-      width: 300px;
-      max-width: 50vw;
-      height: auto;
+      background: rgba(0, 0, 0, 0.5);
+      width: 300px; max-width: 50vw; height: auto;
     }
 
-    /* Estilo de la imagen lateral */
+    /* Imagen lateral */
     .side-image {
-      border: 3px solid rgba(0,255,70,0.8);
+      border: 3px solid rgba(0, 255, 70, 0.8);
       border-radius: 8px;
-      background: rgba(0,0,0,0.5);
-      width: 150px;
-      height: auto;
+      background: rgba(0, 0, 0, 0.5);
+      width: 150px; height: auto;
     }
   </style>
 </head>
 <body>
-  <!-- Canvas para el efecto Matrix -->
+  <!-- Fondo Matrix -->
   <canvas id="matrix"></canvas>
 
-  <!-- Título principal -->
-  <h1 id="pageTitle">🔥 TYRONE-PRIME 🔥</h1>
-
-  <!-- Contenedor con video e imagen lateral -->
+  <!-- Contenedor con título y medios -->
   <div id="videoContainer">
-    <!-- Video con tamaño más pequeño y centrado -->
-    <video controls autoplay loop muted>
-      <source src="./video/SnapTik-dot-Kim-cf2043946c00541a6b23c4bd28b13e0b.mp4" type="video/mp4">
-      Tu navegador no soporta el elemento <code>video</code>.
-    </video>
-
-    <!-- Imagen lateral opcional -->
-    <img src="./video/WhatsApp%20Image%202025-07-24%20at%2011.56.50%20AM.jpeg"
-         alt="Imagen lateral" class="side-image" />
+    <h1 id="pageTitle">🔥 TYRONE-PRIME 🔥</h1>
+    <div id="media">
+      <video controls autoplay loop muted>
+        <source src="./video/SnapTik-dot-Kim-cf2043946c00541a6b23c4bd28b13e0b.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento <code>video</code>.
+      </video>
+      <img src="./video/WhatsApp%20Image%202025-07-24%20at%2011.56.50%20AM.jpeg"
+           alt="Imagen lateral" class="side-image" />
+    </div>
   </div>
 
   <script>
-    // Configuración del canvas de Matrix
+    // Canvas Matrix
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
-
     function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -101,7 +84,6 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    // Lluvia de caracteres estilo Matrix
     const chars = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロゴゾドボポヴン';
     const fontSize = 16;
     let columns = Math.floor(canvas.width / fontSize);
@@ -110,12 +92,10 @@
     function draw() {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#0F0';
-      ctx.font = `${fontSize}px monospace`;
+      ctx.fillStyle = '#0F0'; ctx.font = `${fontSize}px monospace`;
       for (let i = 0; i < drops.length; i++) {
         const text = chars.charAt(Math.floor(Math.random() * chars.length));
-        const x = i * fontSize;
-        const y = drops[i] * fontSize;
+        const x = i * fontSize, y = drops[i] * fontSize;
         ctx.fillText(text, x, y);
         if (y > canvas.height && Math.random() > 0.975) drops[i] = 0;
         drops[i]++;
