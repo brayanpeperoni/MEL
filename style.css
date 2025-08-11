@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+}
+
+#matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.contenido {
+    position: relative;
+    top: 30%;
+}
+
+h1 {
+    font-size: 2.5em;
+    background: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    padding: 15px 25px;
+    border-radius: 15px;
+}
+
+.botones {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.corazon {
+    background-color: pink;
+    border: none;
+    padding: 25px 35px;
+    font-size: 1.5em;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.corazon:hover {
+    transform: scale(1.2);
+}

@@ -1,126 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TYRONE_PRIME</title>
-  <style>
-    /* Reseteo y fondo negro */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow: hidden; background: black; }
-
-    /* Canvas Matrix detrás de todo */
-    #matrix {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1; /* Enviar detrás de todo */
-    }
-
-    /* Contenedor principal: vertical y centrado */
-    #videoContainer {
-      position: absolute;
-      top: 50%; left: 50%; transform: translate(-50%, -50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1em;
-      z-index: 1;
-    }
-
-    /* Título sobre el video */
-    #pageTitle {
-      color: #ffffff;
-      font-size: 2.5rem;
-      font-family: monospace;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 0.5em 1em;
-      border-radius: 8px;
-      text-align: center;
-      z-index: 2;
-    }
-
-    /* Flex para video e imagen */
-    #media {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    /* Video de tamaño moderado */
-    video {
-      border: 3px solid rgba(0, 255, 70, 0.8);
-      border-radius: 8px;
-      background: rgba(0, 0, 0, 0.5);
-      width: 250px;
-      max-width: 60vw;
-      height: auto;
-    }
-
-    /* Imagen lateral */
-    .side-image {
-      border: 3px solid rgba(0, 255, 70, 0.8);
-      border-radius: 8px;
-      background: rgba(0, 0, 0, 0.5);
-      width: 120px;
-      height: auto;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi beba?</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Efecto Matrix -->
-  <canvas id="matrix"></canvas>
+    <canvas id="matrix-canvas"></canvas>
 
-  <!-- Contenedor de título, video e imagen -->
-  <div id="videoContainer">
-    <h1 id="pageTitle">🔥 TYRONE-PRIME 🔥</h1>
-    <div id="media">
-      <video controls autoplay loop muted>
-        <source src="./video/SnapTik-dot-Kim-cf2043946c00541a6b23c4bd28b13e0b.mp4" type="video/mp4">
-        Tu navegador no soporta <code>video</code>.
-      </video>
-      <img src="./video/WhatsApp%20Image%202025-07-24%20at%2011.56.50%20AM.jpeg"
-           alt="Imagen lateral" class="side-image" />
+    <div class="contenido">
+        <h1>¿Quieres ser mi beba? ❤️</h1>
+        <div class="botones">
+            <button id="btnSi" class="corazon" onclick="aceptarPuddina()">Sí 💖</button>
+            <button id="btnNo" class="corazon" onclick="negarPuddina()">No 💔</button>
+        </div>
     </div>
-  </div>
 
-  <script>
-    // Inicialización del canvas Matrix
-    const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext('2d');
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    const chars = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロゴゾドボポヴン';
-    const fontSize = 16;
-    let columns = Math.floor(canvas.width / fontSize);
-    let drops = Array(columns).fill(1);
-
-    function draw() {
-      // Fondo semitransparente para trazo
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#0F0';
-      ctx.font = `${fontSize}px monospace`;
-      for (let i = 0; i < drops.length; i++) {
-        const text = chars.charAt(Math.floor(Math.random() * chars.length));
-        const x = i * fontSize;
-        const y = drops[i] * fontSize;
-        ctx.fillText(text, x, y);
-        if (y > canvas.height && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
-      }
-    }
-
-    // Primer dibujo e intervalo
-    draw();
-    setInterval(draw, 33);
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
