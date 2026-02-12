@@ -4,58 +4,47 @@ let tamañoNo = 1;
 /* BOTÓN SÍ */
 function aceptarSanValentin() {
 
-    // Mini mensaje
-    let mensaje = document.createElement("div");
-    mensaje.innerText = "Sabía que dirías chi 😏💖";
-    mensaje.classList.add("mini-mensaje");
-    document.body.appendChild(mensaje);
+    // Crear alerta personalizada
+    let alerta = document.createElement("div");
+    alerta.classList.add("alerta-amor");
+    alerta.innerHTML = `
+        <div class="alerta-contenido">
+            <h2>💖 Sabía que dirías chi 😏💖</h2>
+            <p>Ahora prepárate para lo que viene... 💘</p>
+            <button onclick="cerrarAlerta()">Continuar 💝</button>
+        </div>
+    `;
 
-    setTimeout(() => {
-        mensaje.style.opacity = "1";
-    }, 100);
+    document.body.appendChild(alerta);
+}
 
-    // Corazones flotando
-    lanzarCorazones();
-
-    // Redirección
-    setTimeout(() => {
-        window.location.href = "https://www.youtube.com/watch?v=sDMxQF18yvA";
-    }, 2500);
+/* Cerrar alerta y redirigir */
+function cerrarAlerta() {
+    document.querySelector(".alerta-amor").remove();
+    window.location.href = "https://www.youtube.com/watch?v=sDMxQF18yvA";
 }
 
 
 /* BOTÓN NO */
 function negarSanValentin() {
-    tamañoNo *= 0.75; // Se reduce cada vez
+
+    tamañoNo *= 0.75; // se hace más pequeño
     btnNo.style.transform = `scale(${tamañoNo})`;
+
+    // Se mueve por la pantalla
+    let maxX = window.innerWidth - btnNo.offsetWidth;
+    let maxY = window.innerHeight - btnNo.offsetHeight;
+
+    let randomX = Math.random() * maxX;
+    let randomY = Math.random() * maxY;
+
+    btnNo.style.position = "absolute";
+    btnNo.style.left = randomX + "px";
+    btnNo.style.top = randomY + "px";
 
     if (tamañoNo < 0.15) {
         btnNo.style.display = "none";
     }
-}
-
-
-/* Corazones flotando */
-function lanzarCorazones() {
-    let intervalo = setInterval(() => {
-        let corazon = document.createElement("div");
-        corazon.innerHTML = "💖";
-        corazon.classList.add("corazon-flotante");
-
-        corazon.style.left = Math.random() * window.innerWidth + "px";
-        corazon.style.fontSize = (Math.random() * 20 + 20) + "px";
-
-        document.body.appendChild(corazon);
-
-        setTimeout(() => {
-            corazon.remove();
-        }, 4000);
-
-    }, 300);
-
-    setTimeout(() => {
-        clearInterval(intervalo);
-    }, 2500);
 }
 
 
@@ -78,7 +67,7 @@ function drawMatrix() {
 
     ctx.fillStyle = "#ff99cc";
     ctx.shadowColor = "#ff4da6";
-    ctx.shadowBlur = 10;
+    ctx.shadowBlur = 15;
     ctx.font = fontSize + "px monospace";
 
     lluvia.forEach((y, i) => {
