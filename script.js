@@ -1,46 +1,43 @@
-function aceptarPuddina() {
-    document.body.innerHTML += `
-        <div class="pantalla-amor">
-            <h1 class="mensaje-final">💖 ¡Ahora eres mi San Valentín! 💖</h1>
-            <p>Prometo cuidarte, mimarte y hacerte feliz todos los días ✨🌹</p>
-        </div>
-    `;
+let btnNo = document.getElementById("btnNo");
+let tamañoNo = 1;
 
+/* BOTÓN SÍ */
+function aceptarSanValentin() {
+
+    // Mini mensaje
+    let mensaje = document.createElement("div");
+    mensaje.innerText = "Sabía que dirías chi 😏💖";
+    mensaje.classList.add("mini-mensaje");
+    document.body.appendChild(mensaje);
+
+    setTimeout(() => {
+        mensaje.style.opacity = "1";
+    }, 100);
+
+    // Corazones flotando
     lanzarCorazones();
-    reproducirMusica();
+
+    // Redirección
+    setTimeout(() => {
+        window.location.href = "https://www.youtube.com/watch?v=sDMxQF18yvA";
+    }, 2500);
 }
 
-/* Botón No travieso */
-let btnNo = document.getElementById("btnNo");
-let btnSi = document.getElementById("btnSi");
-let tamañoNo = 1;
-let tamañoSi = 1;
 
-function negarPuddina() {
-    tamañoNo *= 0.85;
-    tamañoSi *= 1.1;
-
-    btnSi.style.transform = `scale(${tamañoSi})`;
-
-    let maxX = window.innerWidth - btnNo.offsetWidth - 50;
-    let maxY = window.innerHeight - btnNo.offsetHeight - 50;
-
-    let randomX = Math.random() * maxX;
-    let randomY = Math.random() * maxY;
-
-    btnNo.style.position = "absolute";
-    btnNo.style.left = randomX + "px";
-    btnNo.style.top = randomY + "px";
+/* BOTÓN NO */
+function negarSanValentin() {
+    tamañoNo *= 0.75; // Se reduce cada vez
     btnNo.style.transform = `scale(${tamañoNo})`;
 
-    if (tamañoNo < 0.2) {
+    if (tamañoNo < 0.15) {
         btnNo.style.display = "none";
     }
 }
 
+
 /* Corazones flotando */
 function lanzarCorazones() {
-    setInterval(() => {
+    let intervalo = setInterval(() => {
         let corazon = document.createElement("div");
         corazon.innerHTML = "💖";
         corazon.classList.add("corazon-flotante");
@@ -55,16 +52,14 @@ function lanzarCorazones() {
         }, 4000);
 
     }, 300);
+
+    setTimeout(() => {
+        clearInterval(intervalo);
+    }, 2500);
 }
 
-/* Música romántica */
-function reproducirMusica() {
-    let audio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
-    audio.volume = 0.3;
-    audio.play();
-}
 
-/* Fondo Matrix mejorado */
+/* MATRIX LOVE */
 const canvas = document.getElementById("matrix-canvas");
 const ctx = canvas.getContext("2d");
 
