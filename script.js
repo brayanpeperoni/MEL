@@ -4,7 +4,6 @@ let tamañoNo = 1;
 /* BOTÓN SÍ */
 function aceptarSanValentin() {
 
-    // Crear alerta personalizada
     let alerta = document.createElement("div");
     alerta.classList.add("alerta-amor");
     alerta.innerHTML = `
@@ -31,7 +30,7 @@ function negarSanValentin() {
     tamañoNo *= 0.75; // se hace más pequeño
     btnNo.style.transform = `scale(${tamañoNo})`;
 
-    // Se mueve por la pantalla
+    // se mueve por toda la pantalla
     let maxX = window.innerWidth - btnNo.offsetWidth;
     let maxY = window.innerHeight - btnNo.offsetHeight;
 
@@ -49,6 +48,7 @@ function negarSanValentin() {
 
 
 /* MATRIX LOVE */
+
 const canvas = document.getElementById("matrix-canvas");
 const ctx = canvas.getContext("2d");
 
