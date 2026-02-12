@@ -2,9 +2,19 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    font-family: Arial, sans-serif;
-    color: white;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
+    color: white;
+    background: linear-gradient(135deg, #ff4e9b, #ff0055, #ff7eb3);
+    background-size: 300% 300%;
+    animation: fondoAnimado 8s ease infinite;
+}
+
+/* Fondo animado */
+@keyframes fondoAnimado {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 #matrix-canvas {
@@ -19,31 +29,53 @@ body {
     top: 30%;
 }
 
+/* Título brillante */
 h1 {
-    font-size: 2.5em;
-    background: rgba(0, 0, 0, 0.5);
+    font-size: 3em;
+    background: rgba(0, 0, 0, 0.4);
     display: inline-block;
-    padding: 15px 25px;
-    border-radius: 15px;
+    padding: 20px 35px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px #ff99cc;
+    animation: brilloTitulo 2s infinite alternate;
+}
+
+@keyframes brilloTitulo {
+    from { box-shadow: 0 0 20px #ff4da6; }
+    to { box-shadow: 0 0 40px #ffccff; }
 }
 
 .botones {
-    margin-top: 20px;
+    margin-top: 40px;
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 60px;
 }
 
+/* Botones corazón premium */
 .corazon {
-    background-color: pink;
+    background: radial-gradient(circle at top left, #ff99cc, #ff0066);
     border: none;
-    padding: 25px 35px;
-    font-size: 1.5em;
+    padding: 30px 40px;
+    font-size: 1.6em;
     border-radius: 50%;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 20px #ff4da6, 0 0 40px #ff1a75;
+    transition: all 0.3s ease;
+    animation: latido 1.5s infinite;
+}
+
+/* Efecto latido */
+@keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
 .corazon:hover {
-    transform: scale(1.2);
+    transform: scale(1.3);
+    box-shadow: 0 0 30px #fff, 0 0 60px #ff4da6;
 }
