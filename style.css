@@ -10,7 +10,6 @@ body {
     animation: fondoAnimado 8s ease infinite;
 }
 
-/* Fondo animado */
 @keyframes fondoAnimado {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -26,10 +25,9 @@ body {
 
 .contenido {
     position: relative;
-    top: 30%;
+    top: 25%;
 }
 
-/* Título brillante */
 h1 {
     font-size: 3em;
     background: rgba(0, 0, 0, 0.4);
@@ -38,12 +36,11 @@ h1 {
     border-radius: 25px;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 25px #ff99cc;
-    animation: brilloTitulo 2s infinite alternate;
 }
 
-@keyframes brilloTitulo {
-    from { box-shadow: 0 0 20px #ff4da6; }
-    to { box-shadow: 0 0 40px #ffccff; }
+.mensaje {
+    font-size: 1.2em;
+    margin-top: 10px;
 }
 
 .botones {
@@ -53,7 +50,6 @@ h1 {
     gap: 60px;
 }
 
-/* Botones corazón premium */
 .corazon {
     background: radial-gradient(circle at top left, #ff99cc, #ff0066);
     border: none;
@@ -68,7 +64,6 @@ h1 {
     animation: latido 1.5s infinite;
 }
 
-/* Efecto latido */
 @keyframes latido {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
@@ -76,30 +71,23 @@ h1 {
 }
 
 .corazon:hover {
-    transform: scale(1.3);
-    box-shadow: 0 0 30px #fff, 0 0 60px #ff4da6;
+    transform: scale(1.2);
 }
 
-.pantalla-amor {
+.mini-mensaje {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #ff0066, #ff99cc);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-    text-align: center;
+    bottom: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ff4da6, #ff99cc);
+    padding: 15px 25px;
+    border-radius: 20px;
+    font-size: 1.5em;
     color: white;
-    animation: aparecer 1s ease forwards;
-}
-
-.mensaje-final {
-    font-size: 3em;
-    animation: latido 1.5s infinite;
+    box-shadow: 0 0 20px #ff66cc;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 20;
 }
 
 .corazon-flotante {
@@ -111,9 +99,4 @@ h1 {
 @keyframes flotar {
     from { transform: translateY(0); opacity: 1; }
     to { transform: translateY(-100vh); opacity: 0; }
-}
-
-@keyframes aparecer {
-    from { opacity: 0; }
-    to { opacity: 1; }
 }
