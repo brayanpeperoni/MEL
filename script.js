@@ -55,9 +55,9 @@ const ctx = canvas.getContext("2d");
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
-const palabra = "ALMENDRA🍰❤️‍🔥";
+const palabra = "Almendra ❤️";
 const letras = palabra.split("");
-const fontSize = 18;
+const fontSize = 20;
 const columnas = canvas.width / fontSize;
 const lluvia = Array(Math.floor(columnas)).fill(1);
 
