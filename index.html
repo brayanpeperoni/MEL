@@ -3,117 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💖 Mi Mapachita Hermosa 💖</title>
+    <title>💖 Mi Mapachita 💖</title>
 
-    <!-- Fuente -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Fondo Galaxia -->
-    <canvas id="galaxy"></canvas>
+    <!-- Fondo de estrellas -->
+    <div class="estrellas"></div>
+    <div class="estrellas2"></div>
+    <div class="estrellas3"></div>
 
-    <!-- Estrellas -->
-    <div class="stars"></div>
-    <div class="stars2"></div>
-    <div class="stars3"></div>
-
-    <!-- Nebulosa -->
-    <div class="nebula"></div>
-
-    <!-- Corazones -->
-    <div id="hearts"></div>
-
-    <!-- Contenido -->
+    <!-- Contenido principal -->
     <main class="contenedor">
 
-        <!-- Tarjeta -->
-        <section class="card">
+        <img src="https://media.tenor.com/LxggFGxwOjIAAAAC/cat-love.gif"
+             alt="Gatito enamorado"
+             class="gif">
 
-            <div class="glow"></div>
+        <h1>¿Quieres ser mi Mapachita? 💖</h1>
 
-            <h1 class="titulo">
-                💖 ¿Quieres Ser Mi Mapachita Hermosa? 💖
-            </h1>
+        <p class="texto">
+            Desde que llegaste, haces mis días mucho más bonitos. ✨❤️
+        </p>
 
-            <p class="mensaje">
-                Desde que llegaste a mi vida, todo tiene un brillo diferente.
-                Eres esa persona que ilumina mis días incluso cuando el cielo está oscuro.
-                ✨🌌❤️
-                <br><br>
-                Prometo hacerte sonreír,
-                apoyarte,
-                cuidarte,
-                abrazarte fuerte
-                y crear miles de recuerdos contigo.
-            </p>
+        <div class="botones">
+            <button id="btnSi" onclick="aceptar()">💖 Sí</button>
+            <button id="btnNo" onclick="moverNo()">🤭 No</button>
+        </div>
 
-            <div class="emoji">
-                🦝💕
-            </div>
+        <!-- Se muestra al aceptar -->
+        <div id="sorpresa" class="oculto">
 
-            <!-- Botones -->
-            <div class="botones">
-
-                <button
-                    id="btnSi"
-                    class="btn si"
-                    onclick="aceptarSanValentin()">
-
-                    💝 Sí, quiero 💝
-
-                </button>
-
-                <button
-                    id="btnNo"
-                    class="btn no"
-                    onclick="negarSanValentin()">
-
-                    💔 No...
-
-                </button>
-
-            </div>
-
-        </section>
-
-    </main>
-
-    <!-- Mensaje Final -->
-    <div id="pantallaFinal" class="oculto">
-
-        <div class="finalCard">
-
-            <h1>
-                💖 ¡Sabía que dirías que sí! 💖
-            </h1>
+            <h2>🥹 Sabía que dirías que sí 💖</h2>
 
             <p>
-                Ahora oficialmente eres mi
-                <br>
-                <strong>Mapachita Hermosa 🦝❤️</strong>
+                Ahora toca ver la sorpresa que preparé para ti. ✨
             </p>
 
-            <div class="love">
-                💖 💕 💗 💞 ❤️ 💘 💝
-            </div>
+            <button class="youtube"
+                onclick="window.open('https://youtu.be/TU_LINK_AQUI','_blank')">
+                🎵 Ver Sorpresa
+            </button>
 
         </div>
 
-    </div>
+    </main>
 
-    <!-- Partículas -->
-    <canvas id="particles"></canvas>
-
-    <!-- Música opcional -->
-    <audio id="music" loop>
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- JavaScript -->
     <script src="script.js"></script>
 
 </body>
