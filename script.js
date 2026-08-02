@@ -1,143 +1,74 @@
-//=========================
-// MAPACHITA HERMOSA ❤️
-// Parte 1
-//=========================
-
-const btnSi = document.getElementById("btnSi");
 const btnNo = document.getElementById("btnNo");
+const btnSi = document.getElementById("btnSi");
+const sorpresa = document.getElementById("sorpresa");
 
-let escalaNo = 1;
+let escala = 1;
 
-//------------------------
-// BOTÓN SÍ
-//------------------------
+// Mover botón NO
+function moverNo() {
 
-function aceptarSanValentin(){
+    const ancho = window.innerWidth - btnNo.offsetWidth;
+    const alto = window.innerHeight - btnNo.offsetHeight;
+
+    btnNo.style.position = "fixed";
+    btnNo.style.left = Math.random() * ancho + "px";
+    btnNo.style.top = Math.random() * alto + "px";
+
+    // Crece el botón SI
+    escala += 0.2;
+
+    if (escala > 2.8) escala = 2.8;
+
+    btnSi.style.transform = `scale(${escala})`;
+}
+
+// Compatible con celular
+btnNo.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    moverNo();
+});
+
+btnNo.addEventListener("click", moverNo);
+
+// Botón SI
+function aceptar(){
+
+    document.querySelector(".botones").style.display="none";
+
+    sorpresa.style.display="block";
 
     lanzarCorazones();
 
-    document.getElementById("pantallaFinal").classList.remove("oculto");
-
-    const music = document.getElementById("music");
-
-    if(music){
-        music.play().catch(()=>{});
-    }
-
 }
 
-//------------------------
-// BOTÓN NO
-//------------------------
-
-function negarSanValentin(){
-
-    escalaNo*=0.82;
-
-    btnNo.style.transform=`scale(${escalaNo})`;
-
-    moverBoton();
-
-    if(escalaNo<0.20){
-
-        btnNo.style.display="none";
-
-    }
-
-}
-
-function moverBoton(){
-
-    const margen=15;
-
-    const ancho=window.innerWidth-btnNo.offsetWidth-margen;
-
-    const alto=window.innerHeight-btnNo.offsetHeight-margen;
-
-    const x=Math.random()*ancho;
-
-    const y=Math.random()*alto;
-
-    btnNo.style.position="fixed";
-
-    btnNo.style.left=x+"px";
-
-    btnNo.style.top=y+"px";
-
-}
-
-// En celular se mueve antes de tocarlo
-
-btnNo.addEventListener("touchstart",function(e){
-
-    e.preventDefault();
-
-    negarSanValentin();
-
-});
-
-btnNo.addEventListener("mouseenter",function(){
-
-    if(window.innerWidth>768){
-
-        negarSanValentin();
-
-    }
-
-});
-
-//------------------------
-// CORAZONES
-//------------------------
-
+// Corazones
 function lanzarCorazones(){
 
-    for(let i=0;i<70;i++){
+    const emojis=["💖","💕","❤️","🩷","✨","🦝"];
 
-        crearCorazon();
+    for(let i=0;i<40;i++){
 
+        let c=document.createElement("div");
+
+        c.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+
+        c.style.position="fixed";
+        c.style.left=Math.random()*100+"vw";
+        c.style.top="100vh";
+        c.style.fontSize=(20+Math.random()*25)+"px";
+        c.style.pointerEvents="none";
+        c.style.zIndex="999";
+
+        document.body.appendChild(c);
+
+        c.animate([
+            {transform:"translateY(0)",opacity:1},
+            {transform:"translateY(-120vh)",opacity:0}
+        ],{
+            duration:3000+Math.random()*2000
+        });
+
+        setTimeout(()=>c.remove(),5000);
     }
-
-}
-
-function crearCorazon(){
-
-    const heart=document.createElement("div");
-
-    heart.innerHTML="💖";
-
-    heart.style.position="fixed";
-
-    heart.style.left=Math.random()*100+"vw";
-
-    heart.style.bottom="-40px";
-
-    heart.style.fontSize=(20+Math.random()*35)+"px";
-
-    heart.style.pointerEvents="none";
-
-    heart.style.zIndex="9999";
-
-    heart.style.transition="all 5s linear";
-
-    document.body.appendChild(heart);
-
-    setTimeout(()=>{
-
-        heart.style.bottom="120vh";
-
-        heart.style.transform=
-        `translateX(${Math.random()*300-150}px)
-         rotate(${Math.random()*720}deg)`;
-
-        heart.style.opacity="0";
-
-    },50);
-
-    setTimeout(()=>{
-
-        heart.remove();
-
-    },5200);
 
 }
