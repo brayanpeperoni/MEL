@@ -1,86 +1,143 @@
-let btnNo = document.getElementById("btnNo");
-let tamañoNo = 1;
+//=========================
+// MAPACHITA HERMOSA ❤️
+// Parte 1
+//=========================
 
-/* BOTÓN SÍ */
-function aceptarSanValentin() {
+const btnSi = document.getElementById("btnSi");
+const btnNo = document.getElementById("btnNo");
 
-    let alerta = document.createElement("div");
-    alerta.classList.add("alerta-amor");
-    alerta.innerHTML = `
-        <div class="alerta-contenido">
-            <h2>💖 Sabía que dirías chi 😏💖</h2>
-            <p>Ahora prepárate para lo que viene... 💘</p>
-            <button onclick="cerrarAlerta()">Continuar 💝</button>
-        </div>
-    `;
+let escalaNo = 1;
 
-    document.body.appendChild(alerta);
-}
+//------------------------
+// BOTÓN SÍ
+//------------------------
 
-/* Cerrar alerta y redirigir */
-function cerrarAlerta() {
-    document.querySelector(".alerta-amor").remove();
-    window.location.href = "https://www.youtube.com/watch?v=sDMxQF18yvA";
-}
+function aceptarSanValentin(){
 
+    lanzarCorazones();
 
-/* BOTÓN NO */
-function negarSanValentin() {
+    document.getElementById("pantallaFinal").classList.remove("oculto");
 
-    tamañoNo *= 0.75; // se hace más pequeño
-    btnNo.style.transform = `scale(${tamañoNo})`;
+    const music = document.getElementById("music");
 
-    // se mueve por toda la pantalla
-    let maxX = window.innerWidth - btnNo.offsetWidth;
-    let maxY = window.innerHeight - btnNo.offsetHeight;
-
-    let randomX = Math.random() * maxX;
-    let randomY = Math.random() * maxY;
-
-    btnNo.style.position = "absolute";
-    btnNo.style.left = randomX + "px";
-    btnNo.style.top = randomY + "px";
-
-    if (tamañoNo < 0.15) {
-        btnNo.style.display = "none";
+    if(music){
+        music.play().catch(()=>{});
     }
+
 }
 
+//------------------------
+// BOTÓN NO
+//------------------------
 
-/* MATRIX LOVE */
+function negarSanValentin(){
 
-const canvas = document.getElementById("matrix-canvas");
-const ctx = canvas.getContext("2d");
+    escalaNo*=0.82;
 
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+    btnNo.style.transform=`scale(${escalaNo})`;
 
-const palabra = "Almendra ❤️";
-const letras = palabra.split("");
-const fontSize = 20;
-const columnas = canvas.width / fontSize;
-const lluvia = Array(Math.floor(columnas)).fill(1);
+    moverBoton();
 
-function drawMatrix() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if(escalaNo<0.20){
 
-    ctx.fillStyle = "#ff99cc";
-    ctx.shadowColor = "#ff4da6";
-    ctx.shadowBlur = 15;
-    ctx.font = fontSize + "px monospace";
+        btnNo.style.display="none";
 
-    lluvia.forEach((y, i) => {
-        const letra = letras[Math.floor(Math.random() * letras.length)];
-        const x = i * fontSize;
-        ctx.fillText(letra, x, y * fontSize);
+    }
 
-        if (y * fontSize > canvas.height && Math.random() > 0.975) {
-            lluvia[i] = 0;
-        }
-
-        lluvia[i]++;
-    });
 }
 
-setInterval(drawMatrix, 50);
+function moverBoton(){
+
+    const margen=15;
+
+    const ancho=window.innerWidth-btnNo.offsetWidth-margen;
+
+    const alto=window.innerHeight-btnNo.offsetHeight-margen;
+
+    const x=Math.random()*ancho;
+
+    const y=Math.random()*alto;
+
+    btnNo.style.position="fixed";
+
+    btnNo.style.left=x+"px";
+
+    btnNo.style.top=y+"px";
+
+}
+
+// En celular se mueve antes de tocarlo
+
+btnNo.addEventListener("touchstart",function(e){
+
+    e.preventDefault();
+
+    negarSanValentin();
+
+});
+
+btnNo.addEventListener("mouseenter",function(){
+
+    if(window.innerWidth>768){
+
+        negarSanValentin();
+
+    }
+
+});
+
+//------------------------
+// CORAZONES
+//------------------------
+
+function lanzarCorazones(){
+
+    for(let i=0;i<70;i++){
+
+        crearCorazon();
+
+    }
+
+}
+
+function crearCorazon(){
+
+    const heart=document.createElement("div");
+
+    heart.innerHTML="💖";
+
+    heart.style.position="fixed";
+
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.bottom="-40px";
+
+    heart.style.fontSize=(20+Math.random()*35)+"px";
+
+    heart.style.pointerEvents="none";
+
+    heart.style.zIndex="9999";
+
+    heart.style.transition="all 5s linear";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+
+        heart.style.bottom="120vh";
+
+        heart.style.transform=
+        `translateX(${Math.random()*300-150}px)
+         rotate(${Math.random()*720}deg)`;
+
+        heart.style.opacity="0";
+
+    },50);
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },5200);
+
+}
