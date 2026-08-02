@@ -3,31 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💘 ¿Quieres ser mi San Valentín Almendra? 💘</title>
+    <title>💖 Mi Mapachita Hermosa 💖</title>
+
+    <!-- Fuente -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <canvas id="matrix-canvas"></canvas>
 
-    <div class="contenido">
-        <h1>💖 ¿Quieres Ser Mi Esposa Almendra? 💖</h1>
-        <p class="mensaje">
-            Prometo hacerte sonreír, cuidarte y llenarte de momentos inolvidables ✨🌹
-        </p>
+    <!-- Fondo Galaxia -->
+    <canvas id="galaxy"></canvas>
 
-        <div class="botones">
-            <button id="btnSi" class="corazon" onclick="aceptarSanValentin()">
-                💝 Sí, quiero 💝
-            </button>
+    <!-- Estrellas -->
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
 
-            <button id="btnNo" class="corazon" onclick="negarSanValentin()">
-                💔 No...
-            </button>
+    <!-- Nebulosa -->
+    <div class="nebula"></div>
+
+    <!-- Corazones -->
+    <div id="hearts"></div>
+
+    <!-- Contenido -->
+    <main class="contenedor">
+
+        <!-- Tarjeta -->
+        <section class="card">
+
+            <div class="glow"></div>
+
+            <h1 class="titulo">
+                💖 ¿Quieres Ser Mi Mapachita Hermosa? 💖
+            </h1>
+
+            <p class="mensaje">
+                Desde que llegaste a mi vida, todo tiene un brillo diferente.
+                Eres esa persona que ilumina mis días incluso cuando el cielo está oscuro.
+                ✨🌌❤️
+                <br><br>
+                Prometo hacerte sonreír,
+                apoyarte,
+                cuidarte,
+                abrazarte fuerte
+                y crear miles de recuerdos contigo.
+            </p>
+
+            <div class="emoji">
+                🦝💕
+            </div>
+
+            <!-- Botones -->
+            <div class="botones">
+
+                <button
+                    id="btnSi"
+                    class="btn si"
+                    onclick="aceptarSanValentin()">
+
+                    💝 Sí, quiero 💝
+
+                </button>
+
+                <button
+                    id="btnNo"
+                    class="btn no"
+                    onclick="negarSanValentin()">
+
+                    💔 No...
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Mensaje Final -->
+    <div id="pantallaFinal" class="oculto">
+
+        <div class="finalCard">
+
+            <h1>
+                💖 ¡Sabía que dirías que sí! 💖
+            </h1>
+
+            <p>
+                Ahora oficialmente eres mi
+                <br>
+                <strong>Mapachita Hermosa 🦝❤️</strong>
+            </p>
+
+            <div class="love">
+                💖 💕 💗 💞 ❤️ 💘 💝
+            </div>
+
         </div>
+
     </div>
 
+    <!-- Partículas -->
+    <canvas id="particles"></canvas>
+
+    <!-- Música opcional -->
+    <audio id="music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
+
 </body>
 </html>
-
-
